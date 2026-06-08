@@ -53,7 +53,8 @@ label{color:var(--texto)!important;font-size:0.88rem!important;}
 [data-testid="metric-container"]{background:var(--gris2)!important;border:1px solid var(--gris3)!important;border-radius:8px!important;padding:1rem!important;}
 .stDownloadButton button{background:transparent!important;color:var(--verde)!important;border:1px solid var(--verde)!important;font-size:0.8rem!important;}
 hr{border-color:var(--gris3)!important;}
-#MainMenu,footer,header{visibility:hidden;}
+#MainMenu,footer{visibility:hidden;}
+header{visibility:visible!important;background:transparent!important;}
 .viewerBadge_container__1QSob{display:none!important;}
 </style>
 """, unsafe_allow_html=True)
@@ -297,42 +298,4 @@ elif modulo == "📊 Dashboard":
     d1.metric("Evaluaciones SENVAL","47","+8 este mes")
     d2.metric("Ingresos estimados","$2.340","+$480 este mes")
     d3.metric("Habitaciones ocupadas","2 / 3","1 disponible")
-    d4.metric("Papers guardados","126","+14 esta semana")
-
-    st.markdown('<div class="section-title">Estado de módulos</div>', unsafe_allow_html=True)
-    mods = {"SENVAL":"✅ Activo","SenHouse":"✅ Activo","SenStore":"🟡 En configuración","SenSearch":"🟡 APIs pendientes","Reporte PDF":"🔴 Próximamente","WhatsApp Bot":"🔴 Próximamente"}
-    e1,e2 = st.columns(2)
-    for i,(m,s) in enumerate(mods.items()):
-        col = e1 if i%2==0 else e2
-        col.markdown(f"""
-        <div style="background:var(--gris2);border:1px solid var(--gris3);border-radius:8px;padding:0.8rem 1rem;margin-bottom:0.5rem;display:flex;justify-content:space-between;">
-            <span style="font-weight:600;color:var(--blanco);">{m}</span>
-            <span style="font-size:0.85rem;">{s}</span>
-        </div>""", unsafe_allow_html=True)
-
-    st.markdown('<div class="section-title">Actividad reciente</div>', unsafe_allow_html=True)
-    act = [
-        ("2026-06-08 21:30","SENVAL","Evaluación completada","Moderado"),
-        ("2026-06-08 19:15","SenHouse","Consulta habitación Aqua","—"),
-        ("2026-06-07 14:00","SenStore","Reserva Mentoría SST","$60"),
-        ("2026-06-06 10:30","SenSearch","Búsqueda: burnout petroleum","3 papers"),
-    ]
-    st.dataframe(pd.DataFrame(act, columns=["Fecha","Módulo","Evento","Resultado"]), use_container_width=True, hide_index=True)
-
-    st.markdown('<div class="section-title">Estado del MVP</div>', unsafe_allow_html=True)
-    st.success("SENIA MVP v1.1 activo: SENVAL + Habitaciones + SenStore + SenSearch + Dashboard visual.")
-    st.markdown("""
-    <div class="rec-box">
-        <strong>Próximos pasos:</strong><br>
-        1. Agregar SQLite para guardar evaluaciones y reservas.<br>
-        2. Generar PDF automático de SENVAL.<br>
-        3. Conectar WhatsApp para reservas.<br>
-        4. Convertir SenSearch en biblioteca real con DOI y APA 7.
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div style="text-align:center; margin-top:3rem; font-family:'Space Mono',monospace;
-                font-size:0.65rem; color:#333; letter-spacing:0.2em;">
-        SENIA · BIOCENTRIC · ECOSYSTEM v1.1
-    </div>
-    """, unsafe_allow_html=True)
+    d4.
